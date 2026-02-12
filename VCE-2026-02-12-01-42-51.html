@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Ti ❤️ by AlexDev</title>
+
+   <!-- 
+
+Contáctame:
+
+    * Invitame un café
+ https://buymeacoffee.com/alexx.dev
+
+    * Portafolio Web
+ https://alexxdev.vercel.app
+
+    * Sigueme en tiktok
+ https://www.tiktok.com/@alexx.dev?is_from_webapp=1&sender_device=pc 
+ 
+    *Canal de WhatsApp
+ https://whatsapp.com/channel/0029VazQEXq90x2vIdNkrH1p
+
+ 
+ WhatsApp: +52 1 55 6628 1018
+
+-->
+
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Salsa&display=swap");
+
+    * {
+      margin: 0;
+      padding: 0;
+      font-family: "Salsa", cursive;
+      cursor: auto; 
+        cursor: url('assets/6.png'), auto !important;
+        -webkit-tap-highlight-color: transparent;
+
+
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-color: #fce7f3;  
+      --envelope-color: #b91c1c;  
+      --envelope-shadow: #7f1d1d; 
+      --envelope-flap: #991b1b;   
+      
+      --paper-color: #ffffff;    
+      --text-color: #1a1a1a;      
+      --accent-red: #d90429;      
+      --gold: #fbbf24;            
+      
+      --env-width: 75vw; 
+      --env-height: calc(var(--env-width) * 0.6);
+    }
+
+    body {
+      min-height: 100dvh;
+      overflow: hidden;
+      background-color: var(--bg-color); 
+      background-image: url('assets/fondo.gif'); 
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 100dvw;
+      height: 100dvh;
+      display: flex;
+      justify-content: center; 
+      align-items: center;    
+      flex-direction: column;
+    }
+
+    .heart-fall {
+        position: absolute;
+        top: -10px;
+        color: #ff0a54;
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+        z-index: 1;
+        pointer-events: none;
+        animation: fall linear forwards;
+    }
+    @keyframes fall {
+        to { transform: translateY(110vh) rotate(360deg); }
+    }
+
+    .letter {
+      width: auto; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      
+      transform: scale(1); 
+      margin-top: 10vh !important; 
+      
+      animation: letter-lift 3s ease-in-out infinite;
+      transition: 1s ease-in-out;
+      z-index: 2;
+    }
+
+    .envelope {
+      position: relative;
+      display: flex;
+      cursor: pointer;
+      justify-content: center;
+      width: var(--env-width);
+      height: var(--env-height);
+      background-color: var(--envelope-color); 
+      border-radius: 6px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5); 
+    }
+
+    .envelope-flap-left {
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 0;
+      border-left: var(--env-width) solid var(--envelope-color);
+      border-top: var(--env-height) solid transparent;
+      z-index: 20; 
+      pointer-events: none;
+      filter: drop-shadow(2px 0 2px rgba(0,0,0,0.3)); 
+    }
+    
+    .envelope-flap-right {
+      position: absolute;
+      bottom: 0; right: 0;
+      width: 0; height: 0;
+      border-right: var(--env-width) solid var(--envelope-flap); 
+      border-top: var(--env-height) solid transparent;
+      z-index: 19; 
+      pointer-events: none;
+    }
+
+    .sticker {
+        position: absolute;
+        bottom: 35%;
+        left: 50%;
+        transform: translate(-50%, 50%);
+        z-index: 25;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 18%; 
+        aspect-ratio: 1/1; 
+        filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4)); 
+        transition: opacity 0.3s;
+    }
+
+    .sticker img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+    }
+
+    .envelopeHeader {
+      bottom: 15px; left: 20px;
+      padding: 0;
+      list-style: none;
+      position: absolute;
+      z-index: 30;
+    }
+    .envelopeHeader li {
+      display: flex;
+      font-size: calc(2vw + 1vh); 
+      color: #ffcccc; 
+      gap: 0.5rem;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+    }
+    .envelopeHeader li p:last-child {
+      color: #ffffff; 
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .cover {
+      position: absolute;
+      width: 100%; height: 100%;
+      fill: var(--envelope-color); 
+      z-index: 22;
+      transform-origin: top;
+      filter: drop-shadow(0px 2px 3px rgba(0,0,0,0.3));
+      transition: fill 0.5s;
+    }
+    
+    .heart-decor {
+        position: absolute;
+        top: -45%; 
+        right: -10%;
+        width: 30%;
+        height: auto;
+        z-index: 100;
+        transform: rotate(15deg);
+        filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.3));
+        animation: heartbeat 1.5s infinite;
+    }
+    @keyframes heartbeat {
+        0%, 100% { transform: rotate(15deg) scale(1); }
+        50% { transform: rotate(15deg) scale(1.1); }
+    }
+
+    .letterSheet {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+      position: relative;
+      cursor: pointer;
+      width: 90%;
+      height: 95%;
+      bottom: 0;
+      padding: 25px; 
+      gap: 15px;
+      z-index: 15; 
+            background-color: var(--paper-color);
+      background-image: 
+        url('assets/fondo.png'); 
+        
+      background-size: cover;
+      background-position: center;
+
+      border: 6px double var(--gold); 
+      border-radius: 4px;
+      box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
+      overflow-y: auto; 
+      scrollbar-width: thin;
+      
+      transform: scale(0.9) translateY(20%); 
+      opacity: 0;
+    }
+
+    .letterSheet::-webkit-scrollbar { width: 6px; }
+    .letterSheet::-webkit-scrollbar-thumb { background-color: var(--gold); border-radius: 4px; }
+
+    .letterSheet__title {
+      width: 100%;
+      color: var(--accent-red); 
+      font-size: calc(3.5vw + 2.5vh); 
+      text-align: center;
+      margin-bottom: 15px;
+      flex-shrink: 0;
+      font-weight: bold;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    .letterSheet__text {
+      color: var(--text-color); 
+      font-size: calc(2.2vw + 1.4vh); 
+      text-align: center;
+      line-height: 1.5;
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+
+    .countdown {
+      margin: 1.5rem auto 1rem auto;
+      color: #ffffff;
+      background-color: var(--accent-red); 
+      font-size: calc(1.8vw + 1.2vh); 
+      text-align: center;
+      font-weight: bold;
+      border: 2px solid var(--gold);
+      padding: 10px 25px;
+      border-radius: 30px;
+      box-shadow: 0 4px 10px rgba(217, 4, 41, 0.4);
+      flex-shrink: 0;
+      width: fit-content;
+    }
+
+    .typing-cursor::after {
+      content: '|';
+      animation: blink 1s infinite;
+      color: var(--accent-red);
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    .close-button {
+      position: absolute;
+      top: 5px; left: 10px; 
+      font-size: 60px; 
+      color: var(--accent-red);
+      cursor: pointer;
+      z-index: 50; 
+      opacity: 0; 
+      pointer-events: none;
+      transition: all 0.3s ease-in-out;
+    }
+    .close-button.visible { opacity: 1; pointer-events: auto; }
+    .close-button:hover { transform: scale(1.1); }
+
+    .shadowLetter {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      width: 50%;
+      margin-top: 5%;
+      margin-bottom: 3%;
+      opacity: 0.3;
+      height: 1%;
+      background-color: #333; 
+      animation: shadow-lift 3s ease-in-out infinite;
+      border-radius: 100%;
+      transform: scale(0.6);
+    }
+
+    .open {
+      fill: #7f1d1d; 
+      animation: open-letter 1s ease-in-out forwards;
+      z-index: 10;
+    }
+    
+    .zoomIn {
+      animation: zoom-sheet-up 1s ease-in-out forwards;
+    }
+
+    .zoomOut {
+        animation: zoom-sheet-down 1s ease-in-out forwards;
+    }
+
+    @keyframes open-letter {
+      0% { transform: rotateX(0deg); fill: var(--envelope-color); z-index: 22; }
+      100% { transform: translateY(1px) rotateX(180deg); fill: #7f1d1d; z-index: 1; }
+    }
+
+    @keyframes zoom-sheet-up {
+      0% { 
+          transform: translateY(20%) scale(0.9); 
+          z-index: 15; 
+          opacity: 0;
+      }
+      40% {
+          z-index: 15;
+      }
+      41% {
+          z-index: 40; 
+      }
+      100% { 
+          transform: translateY(-25%) scale(1); 
+          z-index: 40; 
+          opacity: 1;
+      } 
+    }
+
+    @keyframes zoom-sheet-down {
+      0% { 
+          transform: translateY(-25%) scale(1); 
+          z-index: 40; 
+          opacity: 1;
+      }
+      40% {
+           z-index: 40; 
+      }
+      41% {
+          z-index: 15;
+      }
+      100% { 
+          transform: translateY(20%) scale(0.9); 
+          z-index: 15; 
+          opacity: 0; 
+      }
+    }
+
+    @keyframes letter-lift {
+      0%, 100% { transform: scale(1) translateY(0); }
+      50% { transform: scale(1) translateY(-15px); }
+    }
+    
+    @keyframes shadow-lift {
+      0%, 100% { transform: scale(0.6); opacity: 0.3; }
+      50% { transform: scale(0.5); opacity: 0.15; }
+    }
+
+    .clickHere {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100px; 
+      opacity: 0.8;
+      pointer-events: none;
+      animation: tap 2s infinite;
+      z-index: 30;
+    }
+    .clickHere path { stroke: white; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.8)); }
+    
+    @keyframes tap {
+        0% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+        20% { opacity: 1; }
+        50% { transform: translate(-50%, -50%) scale(0.9); }
+        100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+    }
+
+    .floating-text {
+      position: fixed;
+      pointer-events: none;
+      color: var(--accent-red);
+      font-weight: bold;
+      font-size: 32px; 
+      text-shadow: 2px 2px 0px #fff; 
+      animation: float-up 1.5s ease-out forwards;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+    }
+
+    @keyframes float-up {
+      0% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+      100% { opacity: 0; transform: translate(-50%, -150%) scale(0.8); }
+    }
+
+    @media (max-width: 768px) {
+        :root { 
+            --env-width: 90vw; 
+        }
+        .sticker { width: 25%; } 
+
+        .letter {
+            margin-top: 10vh; 
+            animation: letter-lift-mobile 3s ease-in-out infinite;
+        }
+
+        @keyframes letter-lift-mobile {
+            0%, 100% { transform: scale(1) translateY(0); }
+            50% { transform: scale(1) translateY(-10px); }
+        }
+
+        .letterSheet__title { font-size: 28px; }
+        .letterSheet__text { font-size: 20px; }
+        .countdown { font-size: 18px; padding: 10px 20px; }
+
+        @keyframes zoom-sheet-up {
+            0% { transform: translateY(20%) scale(0.9); z-index: 15; opacity: 0;}
+            50% { transform: translateY(-50%) scale(0.9); z-index: 15; }
+            51% { z-index: 40; }
+            100% { transform: translateY(-15%) scale(1); z-index: 40; opacity: 1;}
+        }
+        
+        @keyframes zoom-sheet-down {
+            0% { transform: translateY(-15%) scale(1); z-index: 40; opacity: 1;}
+            49% { z-index: 40; }
+            50% { transform: translateY(-50%) scale(0.9); z-index: 15; }
+            100% { transform: translateY(20%) scale(0.9); z-index: 15; opacity: 0; }
+        }
+    }
+
+    @media (orientation: landscape) {
+      .letter { transform: scale(0.6) translateY(20%); margin-top: 0; }
+      .sticker { width: 12%; }
+      .shadowLetter { margin-top: 0; }
+       @keyframes letter-lift {
+        0%, 100% { transform: scale(0.6) translateY(20%); }
+        50% { transform: scale(0.6) translateY(10%); }
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="letter" id="letter">
+    <div class="envelope" id="envelope">
+      
+      <svg class="heart-decor" viewBox="0 0 24 24" fill="#D42426" stroke="#ffffff" stroke-width="1" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+      </svg>
+
+      <ul class="envelopeHeader">
+        <li>
+          <p>Para:</p>
+          <p id="from">El Amor de mi Vida</p>
+        </li>
+        <li>
+          <p>De:</p>
+          <p id="to">Tu admirador secreto</p>
+        </li>
+      </ul>
+
+      <div class="letterSheet" id="letterSheet">
+        <div class="close-button" id="close-button">&times;</div>
+        <h2 class="letterSheet__title" id="title"></h2>
+        <p class="letterSheet__text" id="message"></p>
+        <div id="countdown" class="countdown"></div>
+      </div>
+
+      <div class="envelope-flap-left"></div>
+      <div class="envelope-flap-right"></div>
+
+      <svg class="cover" id="cover" viewBox="0 0 500 300" preserveAspectRatio="none">
+        <path d="M 0 0 L 500 0 L 250 180 L 0 0 Z" />
+      </svg>
+
+      <div class="sticker">
+          <img src="assets/sello.png" alt="Sticker">
+      </div>
+
+    </div>
+    
+    <svg class="clickHere" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7 7L5.5 5.5M15 7L16.5 5.5M5.5 16.5L7 15M11 5L11 3M5 11L3 11M17 17L21 15C21.5 14.8 21.5 14.2 21 14L11.7 10.9C11.3 10.7 10.9 11.1 11.1 11.5L14.7 20.9C14.9 21.3 15.5 21.3 15.6 20.9L17 17Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  
+  <div class="shadowLetter" id="shadowLetter"></div>
+
+  <script>
+    const titleData = "¡Feliz San Valentín!";
+    const messageData = "Cuanto más tiempo estoy contigo,\n más te amo\n\nEres mi persona favorita en el mundo.\nTe amo ❤️🌹";
+    
+    const imagePaths = ['assets/1.png', 'assets/2.png', 'assets/3.png', 'assets/4.png', 'assets/5.png'];
+
+    function updateCountdown() {
+        const now = new Date();
+        let valentine = new Date(now.getFullYear(), 1, 14); 
+        if (now.getMonth() > 1 || (now.getMonth() == 1 && now.getDate() > 14)) {
+            valentine.setFullYear(valentine.getFullYear() + 1);
+        }
+        const diff = valentine - now;
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        
+        const el = document.getElementById("countdown");
+        if(diff <= 0 && diff > -86400000) {
+             el.innerHTML = "✨ ¡Feliz Día de San Valentín! ✨";
+        } else {
+             el.innerHTML = `⏳ Faltan: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+    }
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    const envelope = document.getElementById("envelope");
+    const cover = document.getElementById("cover");
+    const letterSheet = document.getElementById("letterSheet");
+    const letter = document.getElementById("letter");
+    const shadowLetter = document.getElementById("shadowLetter");
+    const clickHere = document.querySelector(".clickHere");
+    const sticker = document.querySelector(".sticker");
+    const titleEl = document.getElementById("title");
+    const msgEl = document.getElementById("message");
+    const closeBtn = document.getElementById("close-button");
+    let isOpen = false;
+
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('heart-fall');
+        heart.innerHTML = Math.random() > 0.5 ? '❤️' : '🌸';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.fontSize = Math.random() * 20 + 10 + 'px'; 
+        heart.style.animationDuration = Math.random() * 3 + 2 + 's'; 
+        heart.style.opacity = Math.random() * 0.7 + 0.3;
+        document.body.appendChild(heart);
+        setTimeout(() => { heart.remove(); }, 5000);
+    }
+    setInterval(createHeart, 200);
+
+    function typeWriter(el, text, i = 0) {
+      if(i===0) el.innerHTML = "";
+      if (i < text.length) {
+        el.innerHTML += text.charAt(i) === '\n' ? '<br>' : text.charAt(i);
+        el.innerHTML += '<span class="typing-cursor"></span>';
+        const cursors = el.getElementsByClassName('typing-cursor');
+        if(cursors.length > 1) cursors[0].remove();
+        
+        if(letterSheet.scrollHeight > letterSheet.clientHeight) {
+             letterSheet.scrollTop = letterSheet.scrollHeight;
+        }
+        setTimeout(() => typeWriter(el, text, i + 1), 50);
+      } else {
+        const c = el.querySelector('.typing-cursor');
+        if(c) c.remove();
+      }
+    }
+
+    const particleContainer = document.createElement('div');
+    particleContainer.style.position = 'fixed';
+    particleContainer.style.top = '0';
+    particleContainer.style.left = '0';
+    particleContainer.style.width = '100%';
+    particleContainer.style.height = '100%';
+    particleContainer.style.pointerEvents = 'none';
+    particleContainer.style.zIndex = '9999';
+    document.body.appendChild(particleContainer);
+
+    let particles = [];
+    function createParticle(x, y) {
+      for (let i = 0; i < 8; i++) { 
+        const angle = Math.random() * 2 * Math.PI;
+        const speed = Math.random() * 3 + 1;
+        const type = Math.floor(Math.random() * imagePaths.length);
+        const imageSrc = imagePaths[type];
+        const particleElement = document.createElement('img');
+        particleElement.src = imageSrc;
+        particleElement.style.position = 'absolute';
+        particleElement.style.left = `${x}px`;
+        particleElement.style.top = `${y}px`;
+        particleElement.style.width = `${Math.random() * 45 + 35}px`;
+        particleElement.style.height = 'auto';
+        particleElement.style.opacity = '1';
+        particleElement.style.transform = `translate(-50%, -50%) rotate(${Math.random() * 360}deg)`;
+        particleElement.style.transition = 'none';
+        particleContainer.appendChild(particleElement);
+        particles.push({
+          element: particleElement, x: x, y: y,
+          speedX: Math.cos(angle) * speed,
+          speedY: Math.sin(angle) * speed,
+          alpha: 1, rotation: Math.random() * 360,
+          rotationSpeed: (Math.random() - 0.5) * 4
+        });
+      }
+      if (particles.length > 80) {
+         for(let k=0; k<10; k++) {
+             if(particles[0]) { particles[0].element.remove(); particles.shift(); }
+         }
+      }
+    }
+
+    function animateParticles() {
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const particle = particles[i];
+        particle.x += particle.speedX;
+        particle.y += particle.speedY;
+        particle.alpha -= 0.015;
+        particle.rotation += particle.rotationSpeed;
+        if (particle.alpha <= 0 || particle.y < 0 || particle.y > window.innerHeight || particle.x < 0 || particle.x > window.innerWidth) {
+          particle.element.remove();
+          particles.splice(i, 1);
+        } else {
+          particle.element.style.left = `${particle.x}px`;
+          particle.element.style.top = `${particle.y}px`;
+          particle.element.style.opacity = particle.alpha.toString();
+          particle.element.style.transform = `translate(-50%, -50%) rotate(${particle.rotation}deg)`;
+        }
+      }
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+    function showTeAmo(x, y) {
+      const textElement = document.createElement('span');
+      textElement.classList.add('floating-text');
+      const frases = ['Te Amo', 'Eres mi vida', 'Love You', '❤️', 'Besos', 'My Love'];
+      textElement.innerText = frases[Math.floor(Math.random() * frases.length)];
+      textElement.style.left = x + 'px';
+      textElement.style.top = y + 'px';
+      document.body.appendChild(textElement);
+      setTimeout(() => { textElement.remove(); }, 1500);
+    }
+
+    document.addEventListener("click", function (e) {
+      createParticle(e.clientX, e.clientY);
+      showTeAmo(e.clientX, e.clientY);
+    });
+
+    envelope.addEventListener('click', () => {
+        if(isOpen) return;
+        isOpen = true;
+        cover.classList.add("open");
+        
+        sticker.style.opacity = "0";
+        clickHere.style.display = "none";
+        
+        letter.style.animation = "none"; 
+        shadowLetter.style.animation = "none";
+        shadowLetter.style.opacity = "0";
+
+        setTimeout(() => {
+            letterSheet.classList.remove("zoomOut");
+            letterSheet.classList.add("zoomIn");
+            
+            setTimeout(() => {
+                closeBtn.classList.add("visible");
+                typeWriter(titleEl, titleData);
+                setTimeout(() => typeWriter(msgEl, messageData), 1000);
+            }, 800);
+        }, 800);
+    });
+
+    closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        isOpen = false;
+        closeBtn.classList.remove("visible");
+        
+        letterSheet.classList.remove("zoomIn");
+        letterSheet.classList.add("zoomOut");
+        
+        titleEl.innerHTML = "";
+        msgEl.innerHTML = "";
+        letterSheet.scrollTop = 0;
+
+        setTimeout(() => {
+            cover.classList.remove("open");
+            sticker.style.opacity = "1";
+            clickHere.style.display = "block";
+            
+            if (window.innerWidth <= 768) {
+                letter.style.animation = "letter-lift-mobile 3s ease-in-out infinite";
+            } else {
+                letter.style.animation = "letter-lift 3s ease-in-out infinite";
+            }
+            shadowLetter.style.animation = "shadow-lift 3s ease-in-out infinite";
+            shadowLetter.style.opacity = "0.3";
+        }, 1000); 
+    });
+  </script>
+</body>
+
+ <!-- 
+
+Contáctame:
+
+    * Invitame un café
+ https://buymeacoffee.com/alexx.dev
+
+    * Portafolio Web
+ https://alexxdev.vercel.app
+
+    * Sigueme en tiktok
+ https://www.tiktok.com/@alexx.dev?is_from_webapp=1&sender_device=pc 
+ 
+    *Canal de WhatsApp
+ https://whatsapp.com/channel/0029VazQEXq90x2vIdNkrH1p
+
+ 
+ WhatsApp: +52 1 55 6628 1018
+
+-->
+
+</html>
